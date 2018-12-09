@@ -10,6 +10,7 @@ var movieName = process.argv[3];
 var artist = process.argv[3];
 var song = process.argv[3];
 
+var spotify = new Spotify(keys.spotify);
 
 
 switch(input){
@@ -22,10 +23,11 @@ case "concert-this":
     break;
 
 case "spotify-this-song":
+    getSong();
     break;
 
 case "do-what-it-says":
-  // fs.readfile;
+    // doThis();
   break;
 // break;
 
@@ -35,27 +37,25 @@ console.log("{Please enter a command: concert-this, movie-this, spotify-this-son
 }
 
 function getMovie(){
+  if(movieName){
+    movieName = movieName
+  }else{
+    movieName ="Mr Nobody";
+  }
 axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy").then(
   function(response) {
-   if (movieName === undefined || movieName === " "){
-       movieName = "Mr/. Nobody";
-      console.log("=====================================");
-      console.log("If you haven't watched 'Mr. Nobody,' then you should: <http://www.imdb.com/title/tt0485947/>");
-      console.log("It's on Netflix!");
-      console.log("=====================================");
-   }else{
-      console.log("=====================================");
-      console.log("Movie Title: " + response.data.Title);
-      console.log("Release Year: " + response.data.Year);
-      console.log("IMDB Rating: " + response.data.imdbRating);
-      console.log("Rotten Tomatoes Rating: " + response.data.tomatoRating);
-      console.log("Country: " + response.data.Country);
-      console.log("Language: " + response.data.Language);
-      console.log("Plot: " + response.data.Plot);
-      console.log("Actors: " + response.data.Actors);
-      console.log("=====================================");
-   }
-})
+       console.log("=====================================");
+       console.log("Movie Title: " + response.data.Title);
+       console.log("Release Year: " + response.data.Year);
+       console.log("IMDB Rating: " + response.data.imdbRating);
+       console.log("Rotten Tomatoes Rating: " + response.data.tomatoRating);
+       console.log("Country: " + response.data.Country);
+       console.log("Language: " + response.data.Language);
+       console.log("Plot: " + response.data.Plot);
+       console.log("Actors: " + response.data.Actors);
+       console.log("=====================================");
+   });
+   
 };
 
 function getBand(){
@@ -73,53 +73,55 @@ function getBand(){
       fs.appendFile("log.txt", artist, function(err) {
 
       });
+      
 };
 
-// getBand();
 
-// song = "The Sign Ace of Base"; 
-var spotify = new Spotify(keys.spotify);
+function getSong(){
+if(song){
+  song = song
+}else{
+  song ='The Sign Ace of Base'
+}
 
-// can't get the Sign to default????
 spotify.search({ type: 'track', query: song }, function(err, data) {
-  if (song === undefined || song === " ") {
-    song = "The Sign Ace of Base"; 
-    console.log('Help Me: ' + song);
-  } else {
+   
   console.log("=====================================");
   console.log("Artist(s): " + data.tracks.items[0].artists[0].name);
   console.log("Song Name: " + data.tracks.items[0].name); 
   console.log("Preview Song Here: " + data.tracks.items[0].preview_url); 
   console.log("Album Name: " + data.tracks.items[0].album.name); 
   console.log("=====================================");
-  // console.log(data.tracks.items[0]); 
-  // console.log(err);
-  };
+    
 
-
-fs.appendFile("log.txt", data.tracks.items[0].artists[0].name, function(err) {
-
-});
-fs.appendFile("log.txt", ", " + data.tracks.items[0].name, function(err) {
- 
-});
-fs.appendFile("log.txt", ", " + data.tracks.items[0].preview_url, function(err) {
- 
-});
-fs.appendFile("log.txt", ", " + data.tracks.items[0].album.name, function(err) {
- 
-});
-
-});
-
-
-fs.readFile("random.txt", "utf8", function(error, data) {
+fs.appendFile("log.txt", "Artist: " +data.tracks.items[0].artists[0].name, function(err) {
   
-  if (process.argv[3]==="do-what-this-says") {
-     console.log(process.argv[2]+process.argv[3]);
-  }
-  console.log(data);
-
-  // gotta figure out how to run this
+});
+fs.appendFile("log.txt", "SongName: " + data.tracks.items[0].name, function(err) {
+ 
+});
+fs.appendFile("log.txt", "Preview Song Url: " + data.tracks.items[0].preview_url, function(err) {
+ 
+});
+fs.appendFile("log.txt", "Album Name: " + data.tracks.items[0].album.name, function(err) {
+ 
+});
 
 });
+
+}
+
+// function doThis()
+// if (process.argv[2]==="spotify this song"&& process.argv[3])
+
+// fs.readFile("random.txt", "utf8", function(error, data) {
+  
+//   if ("do-what-this-says") {
+//      console.log(process.argv[2]+process.argv[3]);
+//   }
+//   console.log(data);
+
+//   // gotta figure out how to run this
+
+// });
+
