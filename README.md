@@ -60,6 +60,9 @@ BONUS
 In addition to logging the data to your terminal/bash window, output the data to a .txt file called log.txt.
 Make sure you append each command you run to the log.txt file.
 Do not overwrite your file each time you run a command.
+Screenshot for logs of spotify-this-song command: <img width="1182" alt="screen shot 2018-12-08 at 11 43 36 pm" src="https://user-images.githubusercontent.com/24796624/49693512-2364f680-fb43-11e8-9723-28642a9422f3.png">
+
+***I was yet to get the other commands to log***
 
 
 
