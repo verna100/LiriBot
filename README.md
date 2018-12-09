@@ -17,16 +17,18 @@ Should list the following:
 -Venue location
 -Date of the Event (use moment to format this as "MM/DD/YYYY")
 
+Screenshot of concert-this: https://user-images.githubusercontent.com/24796624/49693266-f2cd8e80-fb3b-11e8-9800-f4a2ec776b32.png
 
 node liri.js spotify-this-song '<song name here>'
-Shouls show the following information about the song in your terminal/bash window:
+Should show the following information about the song in your terminal/bash window:
 -Artist(s)
 -The song's name
 -A preview link of the song from Spotify
 -The album that the song is from
+ Screenshot of spotify-this-song w/song: https://user-images.githubusercontent.com/24796624/49693336-be5ad200-fb3d-11e8-8d12-19dd1162495c.png
 
 **If no song is provided then your program will default to "The Sign" by Ace of Base.
-
+Screenshot of no song default for spotify-this-song: https://user-images.githubusercontent.com/24796624/49693327-750a8280-fb3d-11e8-9cec-1e685847de49.png
 
 node liri.js movie-this '<movie name here>'
 Should output the following information to your terminal/bash window:
@@ -38,11 +40,14 @@ Should output the following information to your terminal/bash window:
   * Language of the movie.
   * Plot of the movie.
   * Actors in the movie.
+ Screenshot of movie-this with movie input: https://user-images.githubusercontent.com/24796624/49693345-00841380-fb3e-11e8-9f06-c19284a2112b.png
 
 
 If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 If you haven't watched "Mr. Nobody," then you should: http://www.imdb.com/title/tt0485947/
 It's on Netflix!
+
+Screenshot for movie-this w/ default movie: https://user-images.githubusercontent.com/24796624/49693344-e9452600-fb3d-11e8-958d-8c62d3a9e284.png
 
 
 node liri.js do-what-it-says
