@@ -121,7 +121,7 @@ fs.readFile("random.txt", "utf8", function(error, data) {
   if (error) throw error;
     var dataArray = data.split (',');
        for (let i = 0; i < dataArray.length; i=i+2) {
-        console.log(dataArray[i], dataArray[i+1])
+      //   console.log(dataArray[i], dataArray[i+1])
         pick(dataArray[i], dataArray[i+1]);
          
        }
