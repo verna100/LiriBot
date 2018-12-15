@@ -9,32 +9,38 @@ var input = process.argv[2];
 var movieName = process.argv[3];
 var artist = process.argv[3];
 var song = process.argv[3];
+var pick ="";
 
 var spotify = new Spotify(keys.spotify);
 
-
+var pick = function(input, functionData){
 switch(input){
 case "movie-this":
-    getMovie();
+    getMovie(functionData);
     break;
 
 case "concert-this":
-    getBand();
+    getBand(functionData);
     break;
 
 case "spotify-this-song":
-    getSong();
+    getSong(functionData);
     break;
 
 case "do-what-it-says":
-    // doThis();
+    doThis();
   break;
-// break;
 
 default:
 console.log("{Please enter a command: concert-this, movie-this, spotify-this-song, do-what-it-says}");
 
 }
+}
+
+var run = function(argOne, argTwo){
+  pick(argOne, argTwo);
+}
+run(process.argv[2], process.argv[3]);
 
 function getMovie(){
   if(movieName){
@@ -77,7 +83,7 @@ function getBand(){
 };
 
 
-function getSong(){
+function getSong(song){
 if(song){
   song = song
 }else{
@@ -85,7 +91,6 @@ if(song){
 }
 
 spotify.search({ type: 'track', query: song }, function(err, data) {
-   
   console.log("=====================================");
   console.log("Artist(s): " + data.tracks.items[0].artists[0].name);
   console.log("Song Name: " + data.tracks.items[0].name); 
@@ -111,17 +116,20 @@ fs.appendFile("log.txt", "Album Name: " + data.tracks.items[0].album.name, funct
 
 }
 
-// function doThis()
-// if (process.argv[2]==="spotify this song"&& process.argv[3])
+function doThis(){
+fs.readFile("random.txt", "utf8", function(error, data) {
+  if (error) throw error;
+    var dataArray = data.split (',');
+       for (let i = 0; i < dataArray.length; i=i+2) {
+        console.log(dataArray[i], dataArray[i+1])
+        pick(dataArray[i], dataArray[i+1]);
+         
+       }
+}); 
 
-// fs.readFile("random.txt", "utf8", function(error, data) {
-  
-//   if ("do-what-this-says") {
-//      console.log(process.argv[2]+process.argv[3]);
-//   }
-//   console.log(data);
+}
 
-//   // gotta figure out how to run this
 
-// });
+
+
 
